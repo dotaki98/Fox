@@ -20,6 +20,8 @@ public class Fabrica{
 	}
 
 	public Vehiculo fabricarVehiculo(){
+		Vehiculo nuevoVehiculo = new Vehiculo();
 		System.out.println("La clase Fabrica esta ejecutando el metodo fabricarVehiculo");
+		return nuevoVehiculo;
 	}
 }

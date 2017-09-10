@@ -4,7 +4,7 @@ public class Vehiculo{
 	
 	private String marca;
 	private String modelo;
-	private ArrayList<Llanta> llantas = new ArrayList<Llanta>(2);
+	private ArrayList<Llanta> llantas;
 	private Motor motor;
 
 	public String getMarca(){
@@ -14,6 +14,30 @@ public class Vehiculo{
 
 	public void setMarca(String marca){
 		this.marca = marca;
+	}
+
+	public String getModelo(){
+		return this.modelo;
+	}
+
+	public void setModelo(String modelo){
+		this.modelo = modelo;
+	}
+
+	public ArrayList<Llanta> getLlantas(){
+		return this.llantas;
+	}
+
+	public void setLlantas(ArrayList<Llanta> llantas){
+		this.llantas = llantas;
+	}
+
+	public Motor getMotor(){
+		return this.motor;
+	}
+
+	public void setMotor(Motor motor){
+		this.motor = motor;
 	}
 
 	public void acelerar(){

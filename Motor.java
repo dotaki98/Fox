@@ -3,3 +3,4 @@ public class Motor{
 	private String modelo;
 	private int potencia;
 }
+
