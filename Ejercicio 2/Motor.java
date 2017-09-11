@@ -5,7 +5,6 @@ public class Motor
 	private String marca;
 	private String modelo;
 	private int potencia;
-	Scanner scanner=new Scanner(System.in);
 
 	public void setMarca(String marca)
 	{
@@ -39,13 +38,9 @@ public class Motor
 	}
 	public Motor(String marca, String modelo, int potencia)
 	{
-		System.out.println("Marca del motor: ");
-		this.marca=scanner.next();
-		System.out.println("Modelo del motor; ");
-		this.modelo=scanner.next();
-		System.out.println("Potencia del motor: ");
-		this.potencia=scanner.nextInt();
-		System.out.println("La Marca del motor es: ["+marca+"], el Modelo es ["+modelo+"] y la potencia es de ["+potencia+"]");
+		this.marca = marca;
+		this.modelo = modelo;
+		this.potencia = potencia;
 	}
 }
 

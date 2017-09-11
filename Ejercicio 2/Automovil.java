@@ -4,7 +4,6 @@ import java.util.ArrayList;
 public class Automovil extends Vehiculo
 {
 	private String color;
-	Scanner scanner=new Scanner(System.in);
 
 	public void setColor(String color)
 	{
@@ -18,15 +17,15 @@ public class Automovil extends Vehiculo
 
 	public Automovil()
 	{
+		super.marca = "";
+		super.modelo = "";
 		this.color="";
 	}
 	public Automovil(String color, String marca, String modelo)
 	{
-		setMarca(marca);
-		setModelo(modelo);
-		System.out.println("¿Qué color será tú automovil?");
-		this.color=scanner.next();
-		System.out.println("El automovil será del color ["+color+"] de la marca ["+marca+"] y modelo ["+modelo+"]");
+		super.marca = marca;
+		super.modelo = modelo;
+		this.color = color;
 	}
 
 }

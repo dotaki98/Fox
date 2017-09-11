@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class Motocicleta extends Vehiculo
 {
 	private String tipo;
-	Scanner scanner=new Scanner(System.in);
 
 	public void setTipo(String tipo)
 	{
@@ -16,15 +15,15 @@ public class Motocicleta extends Vehiculo
 	}
 	public Motocicleta()
 	{
+		super.marca = "";
+		super.modelo = "";
 		this.tipo="";
 	}
 	public Motocicleta(String tipo, String marca, String modelo)
 	{
-		setMarca(marca);
-		setModelo(modelo);
-		System.out.println("Ingrese el tipo de Motocicleta que desea: ");
-		this.tipo=scanner.next();
-		System.out.println("El tipo de Motocicleta es ["+tipo+"] con Marca ["+marca+"] y Modelo ["+modelo+"]");
+		this.tipo = tipo;
+		super.marca = marca;
+		super.modelo = modelo;
 	}
 
 }

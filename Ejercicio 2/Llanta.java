@@ -5,7 +5,6 @@ public class Llanta
 	private String material;
 	private int diametro;
 	private int presion;
-	Scanner scanner=new Scanner(System.in);
 
 	public void setMaterial(String material)
 	{
@@ -48,11 +47,8 @@ public class Llanta
 	}
 	public Llanta(String material, int diametro, int presion)
 	{
-		System.out.println("¿Qué material deseas que se utilice para el material de la llanta? ");
-		this.material = scanner.next();
-		System.out.println("Ingresa el diámetro que deseas que tenga la llanta: ");
-		this.diametro = scanner.nextInt();
-		System.out.println("Ingresa la Presion que deseas que lleve: ");
-		this.presion = scanner.nextInt();
+		this.material = material;
+		this.diametro = diametro;
+		this.presion = presion;
 	}
 }

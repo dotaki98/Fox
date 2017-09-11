@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Silenciador
 {
 	private String marca;
-	Scanner scanner=new Scanner(System.in);
 
 	public void setMarca(String marca)
 	{
@@ -23,7 +22,6 @@ public class Silenciador
 	}
 	public Silenciador(String marca)
 	{
-		System.out.println("Marca del silenciador: ");
-		this.marca=scanner.next();
+		this.marca = marca;
 	}
 }

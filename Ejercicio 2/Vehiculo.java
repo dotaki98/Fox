@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 public class Vehiculo
 {
-	private String marca;
-	private String modelo;
+	protected String marca;
+	protected String modelo;
 	private ArrayList<Llanta> llantas;
 	private Motor motor;
 	Scanner scanner = new Scanner(System.in);
@@ -41,10 +41,7 @@ public class Vehiculo
 	}
 	public Vehiculo(String marca, String modelo)
 	{
-		System.out.println("Ingresa la marca que deseas para el vehículo: ");
-		this.marca = scanner.next();
-		System.out.println("Ingresa el nombre del modelo que te gustaría para tu vehículo: ");
-		this.modelo = scanner.next();
-		System.out.println("EL vehículo es de la marca ["+marca+"] y modelo ["+modelo+"] ");
+		this.marca = marca;
+		this.modelo = modelo;
 	}
 }
