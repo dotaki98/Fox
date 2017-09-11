@@ -73,35 +73,31 @@ public class Fabrica
 					nuevo_auto.setAccesorio(accesorio);
 				}
 			}
-			System.out.println("Por favor ingrese la presión que desea en sus llantas:");
-			presion= sc.nextInt();
 			do{
+				System.out.println("Por favor ingrese la presión que desea en sus llantas: ");
+				presion= sc.nextInt();
 				if(presion>0 && presion<=10){
-<<<<<<< HEAD
-				ArrayList<Llanta> llantas = new ArrayList<Llanta>(4);
+				ArrayList<Llanta> llantas = new ArrayList<Llanta>();
 				for(int i=0; i<4; i++){
-					Llanta llanta = llantas.get(i);
+					Llanta llanta = new Llanta();
 					llanta.setPresion(presion);
+					llantas.add(llanta);
 				}
 				nuevo_auto.setLlantas(llantas);
-				System.out.println("La presión acual de sus llantas es :"+presion);
-=======
-				nuevo_auto.llantas.setPresion(presion);
-				System.out.println("La presión acual de su llanta es :"+presion);
->>>>>>> 73ed735fe030ed6244ea2a1aced3bc3f29507316
+				System.out.println("La presión acual de sus llantas es: "+presion);
 				}else{
 				System.out.println("La presión que ingresó no es adecuada, por favor intente de nuevo");
 				}
-			}while(presion>0 && presion<=10);
+			}while(presion<1 || presion>10);
 			return nuevo_auto;
 		} else {
 			Motocicleta nueva_moto = new Motocicleta();
 			System.out.println("Introduzca marca de motocicleta: ");
 			marca = sc.next();
-			nueva_moto.setModelo(marca);
+			nueva_moto.setMarca(marca);
 			System.out.println("Introduzca modelo de motocicleta: ");
-				String Modelo = sc.next();
-				nueva_moto.setModelo(Modelo);
+				String modelo = sc.next();
+				nueva_moto.setModelo(modelo);
 			System.out.println("Introduzca tipo de motocicleta: ");
 			String tipo="";
 			tipo = sc.next();
@@ -116,28 +112,25 @@ public class Fabrica
 			if(silenciador == 1){
 				System.out.println("Introduzca marca de silenciador: ");
 				marca = sc.next();
-<<<<<<< HEAD
 				Silenciador accesorio = new Silenciador(marca);
 				nueva_moto.setAccesorio(accesorio);
-=======
-				nueva_moto.accesorio = new Silenciador(marca);
->>>>>>> 73ed735fe030ed6244ea2a1aced3bc3f29507316
 			}
-			System.out.println("Por favor ingrese la presión que desea en sus llantas:");
-			presion= sc.nextInt();
 			do{
+				System.out.println("Por favor ingrese la presión que desea en sus llantas: ");
+				presion= sc.nextInt();
 				if(presion>0 && presion<=10){
-				ArrayList<Llanta> llantas = new ArrayList<Llanta>(2);
+				ArrayList<Llanta> llantas = new ArrayList<Llanta>();
 				for(int i=0; i<2; i++){
-					Llanta llanta = llantas.get(i);
+					Llanta llanta = new Llanta();
 					llanta.setPresion(presion);
+					llantas.add(llanta);
 				}
 				nueva_moto.setLlantas(llantas);
-				System.out.println("La presión acual de sus llantas es :"+presion);
+				System.out.println("La presión acual de sus llantas es: "+presion);
 				}else{
 				System.out.println("La presión que ingresó no es adecuada, por favor intente de nuevo");
 				}
-			}while(presion>0 && presion<=10);
+			}while(presion<1 || presion>10);
 			return nueva_moto;
 				
 			
