@@ -25,6 +25,9 @@ public class Vehiculo
 	{
 		return this.modelo;
 	}
+	public void setLlantas(ArrayList<Llanta> llantas){
+		this.llantas = llantas;
+	}
 	public void acelerar()
 	{
 		System.out.println("La clase Vehiculo esta ejecutando el método acelerar");

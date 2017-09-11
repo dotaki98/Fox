@@ -25,10 +25,10 @@ public class Distribuidora{
 			if(vehiculo_en_prueba.accesorio != null){ // En caso de que el vehículo cuente con un accesorio, se procede a realizar sus pruebas
 				String tipo_de_accesorio = vehiculo_en_prueba.accesorio.getClass().getName(); // Mediante los métodos .getClass().getName()
 				if(tipo_de_accesorio == "Quemacocos"){					      // podemos obtener la clase del objeto convertida a String
-					vehiculo_en_prueba.accesorio.abrir(); // Si el accesorio es un quemacocos, se procede a ejecutar sus métodos
-					vehiculo_en_prueba.accesorio.cerrar();
+					vehiculo_en_prueba.getAccesorio().abrir(); // Si el accesorio es un quemacocos, se procede a ejecutar sus métodos
+					vehiculo_en_prueba.getAccesorio().cerrar();
 				} else {
-					vehiculo_en_prueba.accesorio.suprimirRuido(); // Si el accesorio no es un quemacocos, entonces es un silenciador, por lo que se prueba
+					vehiculo_en_prueba.getAccesorio().suprimirRuido(); // Si el accesorio no es un quemacocos, entonces es un silenciador, por lo que se prueba
 				}
 			}
 		}

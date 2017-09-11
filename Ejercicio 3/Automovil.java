@@ -21,6 +21,9 @@ public class Automovil extends Vehiculo//palabra reservada para poder denotar
 		this.accesorio = quemacocos;
 	}
 
+	public Quemacocos getAccesorio(){
+		return this.accesorio;
+	}
 
 
 	public Automovil()//constructor vacío que inicializa los valores para que no sean null

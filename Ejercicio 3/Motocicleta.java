@@ -17,6 +17,12 @@ public class Motocicleta extends Vehiculo
 	public void setAccesorio(Silenciador accesorio){
 		this.accesorio = accesorio;
 	}
+
+	public Silenciador getAccesorio(){
+		return this.accesorio;
+	}
+
+
 	public Motocicleta()
 	{
 		super.marca = "";

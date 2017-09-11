@@ -1,10 +1,11 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Fabrica
 {
 	private String nombre;
 	private String direccion;
-	Scanner scanner= new Scanner(System.in);
+	Scanner sc= new Scanner(System.in);
 
 	public void setNombre(String nombre)
 	{
@@ -35,18 +36,25 @@ public class Fabrica
 	}
 	public Vehiculo fabricarVehiculo(boolean automovil)
 	{
+		String marca="";	
+		String color="";	
+		String aosdjoas=""; 		
+		int presion;
 		if(automovil){
 			Automovil nuevo_auto = new Automovil();
 			System.out.println("Introduzca marca de automóvil: ");
-			nuevo_auto.marca = sc.next();
+			marca = sc.next();
+			nuevo_auto.setMarca(marca);
 			System.out.println("Introduzca modelo de automóvil: ");
-			nuevo_auto.modelo = sc.next();
+			aosdjoas= sc.next();
+			nuevo_auto.setModelo(aosdjoas);
 			System.out.println("Introduzca color de automóvil: ");
-			nuevo_auto.color = sc.next();
+			color = sc.next();
+			nuevo_auto.setColor(color);
 			int quemacocos;;
 			do {
 				System.out.println("¿Desea que el automóvil tenga quemacocos? (Introduzca 1 si desea quemacocos o 0 si no lo desea)");
-				quemacocos = sc.nextInt;
+				quemacocos = sc.nextInt();
 				if(quemacocos != 1 && quemacocos != 0)
 					System.out.println("Opción incorrecta. Vuelva a intentarlo.");
 			} while(quemacocos != 1 && quemacocos != 0);
@@ -58,34 +66,72 @@ public class Fabrica
 						System.out.println("Opción incorrecta. Vuelva a intentarlo.");
 				}while(quemacocos != 1 && quemacocos != 0);
 				if(quemacocos == 1){
-					nuevo_auto.accesorio = new Quemacocos(true);
+					Quemacocos accesorio = new Quemacocos(true);
+					nuevo_auto.setAccesorio(accesorio);
 				} else {
-					nuevo_auto.accesorio = new Quemacocos(false);
+					Quemacocos accesorio = new Quemacocos(false);
+					nuevo_auto.setAccesorio(accesorio);
 				}
 			}
+			System.out.println("Por favor ingrese la presión que desea en sus llantas:");
+			presion= sc.nextInt();
+			do{
+				if(presion>0 && presion<=10){
+				ArrayList<Llanta> llantas = new ArrayList<Llanta>(4);
+				for(int i=0; i<4; i++){
+					Llanta llanta = llantas.get(i);
+					llanta.setPresion(presion);
+				}
+				nuevo_auto.setLlantas(llantas);
+				System.out.println("La presión acual de sus llantas es :"+presion);
+				}else{
+				System.out.println("La presión que ingresó no es adecuada, por favor intente de nuevo");
+				}
+			}while(presion>0 && presion<=10);
 			return nuevo_auto;
 		} else {
 			Motocicleta nueva_moto = new Motocicleta();
 			System.out.println("Introduzca marca de motocicleta: ");
-			nueva_moto.marca = sc.next();
+			marca = sc.next();
+			nueva_moto.setModelo(marca);
 			System.out.println("Introduzca modelo de motocicleta: ");
-			nueva_moto.modelo = sc.next();
+				String Modelo = sc.next();
+				nueva_moto.setModelo(Modelo);
 			System.out.println("Introduzca tipo de motocicleta: ");
-			nueva_moto.tipo = sc.next();
+			String tipo="";
+			tipo = sc.next();
+			nueva_moto.setTipo(tipo);
 			int silenciador;
 			do {
 				System.out.println("¿Desea que la moto tenga silenciador? (Introduzca 1 si desea silenciador o 0 si no lo desea)");
-				silenciador = sc.nextInt;
+				silenciador = sc.nextInt();
 				if(silenciador != 1 && silenciador != 0)
 					System.out.println("Opción incorrecta. Vuelva a intentarlo.");
 			} while(silenciador != 1 && silenciador != 0);
 			if(silenciador == 1){
 				System.out.println("Introduzca marca de silenciador: ");
-				String marca = sc.next();
-				nueva_moto.accesorio = new Silenciador(marca);
+				marca = sc.next();
+				Silenciador accesorio = new Silenciador(marca);
+				nueva_moto.setAccesorio(accesorio);
 			}
+			System.out.println("Por favor ingrese la presión que desea en sus llantas:");
+			presion= sc.nextInt();
+			do{
+				if(presion>0 && presion<=10){
+				ArrayList<Llanta> llantas = new ArrayList<Llanta>(2);
+				for(int i=0; i<2; i++){
+					Llanta llanta = llantas.get(i);
+					llanta.setPresion(presion);
+				}
+				nueva_moto.setLlantas(llantas);
+				System.out.println("La presión acual de sus llantas es :"+presion);
+				}else{
+				System.out.println("La presión que ingresó no es adecuada, por favor intente de nuevo");
+				}
+			}while(presion>0 && presion<=10);
 			return nueva_moto;
 				
 			
 	}
 }
+} 
