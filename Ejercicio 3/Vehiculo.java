@@ -44,4 +44,11 @@ public class Vehiculo
 		this.marca = marca;
 		this.modelo = modelo;
 	}
+	
+	public String toString(){
+		if(llantas.size() == 2)
+			return "Motocicleta marca "+this.marca+" y modelo "+this.modelo; 
+		else
+			return "Automóvil marca "+this.marca+" y modelo "+this.modelo;
+	}
 }
