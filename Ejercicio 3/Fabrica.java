@@ -30,16 +30,62 @@ public class Fabrica
 	
 	public Fabrica(String nombre, String direccion)
 	{
-		System.out.println("Ingrese el nombre que se le dará a la fábrica: ");
-		this.nombre = scanner.next();
-		System.out.println("Ingrese la dirección que se le asignará a la fábrica: ");
-		this.direccion = scanner.next();
-		System.out.println("La fabrica  ["+nombre+"] se encuentra en  ["+direccion+"]");
+		this.nombre = nombre;
+		this.direccion = direccion;
 	}
-	public Vehiculo fabricarVehiculo()
+	public Vehiculo fabricarVehiculo(boolean automovil)
 	{
-		Vehiculo nuevoVehiculo = new Vehiculo();
-		System.out.println("La clase Fabrica esta ejecutando el método fabricarVehiculo");
-		return nuevoVehiculo;
+		if(automovil){
+			Automovil nuevo_auto = new Automovil();
+			System.out.println("Introduzca marca de automóvil: ");
+			nuevo_auto.marca = sc.next();
+			System.out.println("Introduzca modelo de automóvil: ");
+			nuevo_auto.modelo = sc.next();
+			System.out.println("Introduzca color de automóvil: ");
+			nuevo_auto.color = sc.next();
+			int quemacocos;;
+			do {
+				System.out.println("¿Desea que el automóvil tenga quemacocos? (Introduzca 1 si desea quemacocos o 0 si no lo desea)");
+				quemacocos = sc.nextInt;
+				if(quemacocos != 1 && quemacocos != 0)
+					System.out.println("Opción incorrecta. Vuelva a intentarlo.");
+			} while(quemacocos != 1 && quemacocos != 0);
+			if(quemacocos == 1){
+				do{
+					System.out.println("Si desea que el quemacocos sea electrico, introduzca 1, en caso contrario, introduzca 0");
+					quemacocos = sc.nextInt();
+					if(quemacocos != 1 && quemacocos != 0)
+						System.out.println("Opción incorrecta. Vuelva a intentarlo.");
+				}while(quemacocos != 1 && quemacocos != 0);
+				if(quemacocos == 1){
+					nuevo_auto.accesorio = new Quemacocos(true);
+				} else {
+					nuevo_auto.accesorio = new Quemacocos(false);
+				}
+			}
+			return nuevo_auto;
+		} else {
+			Motocicleta nueva_moto = new Motocicleta();
+			System.out.println("Introduzca marca de motocicleta: ");
+			nueva_moto.marca = sc.next();
+			System.out.println("Introduzca modelo de motocicleta: ");
+			nueva_moto.modelo = sc.next();
+			System.out.println("Introduzca tipo de motocicleta: ");
+			nueva_moto.tipo = sc.next();
+			int silenciador;
+			do {
+				System.out.println("¿Desea que la moto tenga silenciador? (Introduzca 1 si desea silenciador o 0 si no lo desea)");
+				silenciador = sc.nextInt;
+				if(silenciador != 1 && silenciador != 0)
+					System.out.println("Opción incorrecta. Vuelva a intentarlo.");
+			} while(silenciador != 1 && silenciador != 0);
+			if(silenciador == 1){
+				System.out.println("Introduzca marca de silenciador: ");
+				String marca = sc.next();
+				nueva_moto.accesorio = new Silenciador(marca);
+			}
+			return nueva_moto;
+				
+			
 	}
 }

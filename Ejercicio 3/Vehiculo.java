@@ -37,7 +37,7 @@ public class Vehiculo
 	{
 		this.marca = "";
 		this.modelo = "";
-		this.llantas = new ArrayList<Llanta>(2);
+		this.llantas = new ArrayList<Llanta>();
 	}
 	public Vehiculo(String marca, String modelo)
 	{

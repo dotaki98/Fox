@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Automovil extends Vehiculo
 {
 	private String color;
+	private Quemacocos accesorio;
 
 	public void setColor(String color)
 	{
@@ -13,6 +14,11 @@ public class Automovil extends Vehiculo
 	{
 		return this.color;
 	}
+	
+	public void setAccesorio(Quemacocos quemacocos){
+		this.accesorio = quemacocos;
+	}
+
 
 
 	public Automovil()
