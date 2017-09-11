@@ -25,8 +25,8 @@ public class Automovil extends Vehiculo//palabra reservada para poder denotar
 
 	public Automovil()//constructor vacío que inicializa los valores para que no sean null
 	{
-		super.marca = "";
-		super.modelo = "";
+		super.marca = "";//indica que el atributo marca se heredó de Vehiculo
+		super.modelo = "";//el atributo modelo se heredó de Vehiculo
 		this.color="";
 	}
 	public Automovil(String color, String marca, String modelo)//Constructor sobrecargado
