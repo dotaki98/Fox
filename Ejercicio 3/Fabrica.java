@@ -77,6 +77,7 @@ public class Fabrica
 			presion= sc.nextInt();
 			do{
 				if(presion>0 && presion<=10){
+<<<<<<< HEAD
 				ArrayList<Llanta> llantas = new ArrayList<Llanta>(4);
 				for(int i=0; i<4; i++){
 					Llanta llanta = llantas.get(i);
@@ -84,6 +85,10 @@ public class Fabrica
 				}
 				nuevo_auto.setLlantas(llantas);
 				System.out.println("La presión acual de sus llantas es :"+presion);
+=======
+				nuevo_auto.llantas.setPresion(presion);
+				System.out.println("La presión acual de su llanta es :"+presion);
+>>>>>>> 73ed735fe030ed6244ea2a1aced3bc3f29507316
 				}else{
 				System.out.println("La presión que ingresó no es adecuada, por favor intente de nuevo");
 				}
@@ -111,8 +116,12 @@ public class Fabrica
 			if(silenciador == 1){
 				System.out.println("Introduzca marca de silenciador: ");
 				marca = sc.next();
+<<<<<<< HEAD
 				Silenciador accesorio = new Silenciador(marca);
 				nueva_moto.setAccesorio(accesorio);
+=======
+				nueva_moto.accesorio = new Silenciador(marca);
+>>>>>>> 73ed735fe030ed6244ea2a1aced3bc3f29507316
 			}
 			System.out.println("Por favor ingrese la presión que desea en sus llantas:");
 			presion= sc.nextInt();
