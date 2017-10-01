@@ -8,6 +8,16 @@ public class Alarma(){
 	private Bateria bateria;
 	private boolean corrienteElectrica, esActiva;
 
+	public Alarma(){
+
+		this.bocina = new Bocina();
+
+		this.bocina.emitirSonido();
+
+		Sensor miSensor = new Sensor();
+		sensores.add(miSensor);
+	}
+	
 	public void registrarCodigo(int codigo){
 
 	}
