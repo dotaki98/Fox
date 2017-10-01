@@ -1,118 +1,144 @@
 public class Alarma(){
-	private String marca,modelo;
-	private Panel  panel;
+	private String marca, modelo;
+	private Panel panel;
 	private Bocina bocina;
 	private int codigo, tiempoActivacion;
 	private Date hora, horaInicio, horaFin;
-	private ArrayList<sensor> sensores;
+	private ArrayList<Sensor> sensores;
 	private Bateria bateria;
-	private boolean corrienteElectrica,esActiva;
-	
-	public void registrarCodigo(int){
-	
+	private boolean corrienteElectrica, esActiva;
+
+	public void registrarCodigo(int codigo){
+
 	}
 	public void activarBocina(){
 	}
-	
-	public void cambiarHoraInicio(Date){
+
+	public void cambiarHoraInicio(Date horaInicio){
 	}
-	
-	public void cambiarHoraFin(Date){
+
+	public void cambiarHoraFin(Date horaFin){
 	}
-	
+
 	public void monitorearSensores(){
 	}
-	
+
 	public void monitorearCorrienteElectrica(){
 	}
-	
+
 	public void activarAlarma(){
 	}
-	
+
 	public void desactivarAlarma(){
 	}
-	
+
 	public void configurarAlarma(){
 	}
-	
-	public void configurarTiempoActivacion(int){
+
+	public void configurarTiempoActivacion(int tiempoActivacion){
 	}
-	
-	public void getMarca(){
+
+	public String getMarca(){
+		return this.marca;
 	}
-	
-	public void setMarca(){
+
+	public void setMarca(String marca){
+		this.marca = marca;
 	}
-	
-	public void getModelo(){
+
+	public String getModelo(){
+		return this.modelo;
 	}
-	
-	public void setModelo(){
+
+	public void setModelo(String modelo){
+		this.modelo = modelo;
 	}
-	
-	public void getPanel(){
+
+	public Panel getPanel(){
+		return this.panel;
 	}
-	
-	public void setPanel(){
+
+	public void setPanel(Panel panel){
+		this.panel = panel;
 	}
-	
-	public void getBocina(){
+
+	public Bocina getBocina(){
+		return this.bocina;
 	}
-	
-	public void setBocina(){
+
+	public void setBocina(Bocina bocina){
+		this.bocina = bocina;
 	}
-	
-	public void getCodigo(){
+
+	public int getCodigo(){
+		return this.codigo;
 	}
-	
-	public void setCodigo(){
+
+	public void setCodigo(int codigo){
+		this.codigo = codigo;
 	}
-	
-	public void getTiempoActivacion(){
+
+	public int getTiempoActivacion(){
+		return this.tiempoActivacion;
 	}
-	
-	public void setTiempoActivacion(){
+
+	public void setTiempoActivacion(int tiempoActivacion){
+		this.tiempoActivacion = tiempoActivacion;
 	}
-	
-	public void getHora(){
+
+	public Date getHora(){
+		return this.hora;
 	}
-	
-	public void setHora(){
+
+	public void setHora(Date hora){
+		this.hora = hora;
 	}
-	
-	public void getHoraInicio(){
+
+	public Date getHoraInicio(){
+		return this.horaInicio;
 	}
-	
-	public void setHoraInicio(){
+
+	public void setHoraInicio(Date horaInicio){
+		this.horaInicio = horaInicio;
 	}
-	
-	public void getHoraFin(){
+
+	public Date getHoraFin(){
+		return this.horaFin;
 	}
-	
-	public void setHoraFin(){
+
+	public void setHoraFin(Date horaFin){
+		this.horaFin = horaFin;
 	}
-	
-	public void getSensores(){
+
+	public ArrayList<Sensor> getSensores(){
+		return this.sensores;
 	}
-	
-	public void setSensores(){
+
+	public void setSensores(ArrayList<Sensor> sensores){
+		this.sensores = sensores;
 	}
-	
-	public void getBateria(){
+
+	public Bateria getBateria(){
+		return this.bateria;
 	}
-	
-	public void setBateria(){
+
+	public void setBateria(Bateria bateria){
+		this.bateria = bateria;
 	}
-	
-	public void getCorrienteElectrica(){
+
+	public boolean getCorrienteElectrica(){
+		return this.corrienteElectrica;
 	}
-	
-	public void setCorrienteElectrica(){
+
+	public void setCorrienteElectrica(boolean corrienteElec){
+		this.corrienteElectrica = corrienteElectrica;
 	}
-	
-	public void getEsActiva(){
+
+	public boolean getEsActiva(){
+		return this.esActiva;
 	}
-	
-	public void setEsActiva(){
+
+	public void setEsActiva(boolean esActiva){
+		this.esActiva = esActiva;
 	}
 }
