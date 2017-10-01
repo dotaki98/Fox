@@ -2,6 +2,10 @@ public class Panel(){
 	private Arraylist<Boton> digitos;
 	private Boton entrada;
 
+	/* Parámetros de los siguientes dos métodos son
+	indicados en el diagrama como de tipo "boton",
+	sin embargo deberían ser "Boton" */
+
 	public void mostrarValorPantalla(Boton boton){
 	}
 
