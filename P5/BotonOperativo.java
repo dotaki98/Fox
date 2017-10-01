@@ -1,9 +1,11 @@
 public class BotonOperativo extends Boton(){
 	private String accion;
-	
-	public void getAccion(){
+
+	public String getAccion(){
+		return this.accion;
 	}
-	
-	public void setAccion(){
+
+	public void setAccion(String accion){
+		this.accion = accion;
 	}
 }

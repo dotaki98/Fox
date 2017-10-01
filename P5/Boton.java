@@ -1,19 +1,23 @@
 public class Boton(){
 	private String tipo;
 	private boolean activo;
-	
-	public void cambiarEstado(boolean){
+
+	public void cambiarEstado(boolean nuevoEstado){
 	}
-	
-	public void getTipo(){
+
+	public String getTipo(){
+		return this.tipo;
 	}
-	
-	public void setTipo(){
+
+	public void setTipo(String tipo){
+		this.tipo = tipo;
 	}
-	
-	public void getActivo(){
+
+	public boolean getActivo(){
+		return this.activo;
 	}
-	
-	public void setActivo(){
+
+	public void setActivo(boolean activo){
+		this.activo = activo;
 	}
 }

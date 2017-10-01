@@ -1,11 +1,14 @@
 public class Bocina(){
 	private int volumen;
+	
 	public void emitirSonido(){
 	}
-	
-	public void getVolumen(){
+
+	public int getVolumen(){
+		return this.volumen;
 	}
-	
-	public void setVolumen(){
+
+	public void setVolumen(int volumen){
+		this.volumen = volumen;
 	}
 }

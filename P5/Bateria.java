@@ -1,15 +1,17 @@
 public class Bateria(){
 	private int carga;
-	
-	public void cargarBateria(int){
+
+	public void cargarBateria(int carga){
 	}
-	
+
 	public void energizarComponente(){
 	}
-	
-	public void getCarga(){
+
+	public int getCarga(){
+		returh this.carga;
 	}
-	
-	public void setCarga(){
+
+	public void setCarga(int carga){
+		this.carga = carga;
 	}
 }

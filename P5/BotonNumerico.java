@@ -1,9 +1,11 @@
 public class BotonNumerico extends Boton(){
 	private int valor;
-	
-	public void getValor(){
+
+	public int getValor(){
+		return this.valor;
 	}
-	
-	public void setValor(){
+
+	public void setValor(int valor;){
+		this.valor = valor;
 	}
 }
