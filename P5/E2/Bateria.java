@@ -1,4 +1,4 @@
-public class Bateria{//La batería tendrá como carga 0 (como cualquier otro producto en el mercado)
+public class Bateria{
 	private int carga;
 
 	public Bateria(){
@@ -10,7 +10,7 @@ public class Bateria{//La batería tendrá como carga 0 (como cualquier otro pro
 
 	public void energizarComponente(){
 	}
-/*Getters y Setters de la bateria*/
+
 	public int getCarga(){
 		return this.carga;
 	}

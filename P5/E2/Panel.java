@@ -1,12 +1,11 @@
 import java.util.ArrayList;
-/*Panel será quien contenga a los botones y por así decirlo, la interfaz*/
+
 public class Panel{
 	private ArrayList<Boton> digitos;
 	private Boton entrada;
 
 	public Panel(){
 		Boton miBoton = new Boton();
-		this.digitos = new ArrayList<Boton>();
 		this.digitos.add(miBoton);
 		this.entrada = new Boton();
 	}

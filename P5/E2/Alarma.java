@@ -1,6 +1,5 @@
 import java.util.Date;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Alarma{
 	private String marca, modelo;
@@ -12,7 +11,7 @@ public class Alarma{
 	private Bateria bateria;
 	private boolean corrienteElectrica, esActiva;
 
-	public Alarma(){ //Inicializamos los datos de la alarma con valores predeterminados
+	public Alarma(){
 		this.marca = "Sony";
 		this.modelo = "T500";
 		this.panel = new Panel();
@@ -23,8 +22,7 @@ public class Alarma{
 		this.horaInicio = new Date();
 		this.horaFin = new Date();
 		Sensor miSensor = new Sensor();
-		this.sensores = new ArrayList<Sensor>();
-		this.sensores.add(miSensor);
+		sensores.add(miSensor);
 		this.bateria = new Bateria();
 		this.corrienteElectrica = true;
 		this.esActiva = true;
@@ -34,7 +32,6 @@ public class Alarma{
 
 	}
 	public void activarBocina(){
-		this.bocina.emitirSonido();
 	}
 
 	public void cambiarHoraInicio(Date horaInicio){
@@ -43,15 +40,9 @@ public class Alarma{
 	public void cambiarHoraFin(Date horaFin){
 	}
 
-	public void monitorearSensores(){//Recorre el arreglo de sensores para saber su estatus e imprimir la alarma
-		for(int i = 0; i < sensores.size(); i++) {
-			Sensor sensorEnMonitoreo = sensores.get(i);
-			if(sensorEnMonitoreo.enviarEstado() == true) {
-				this.activarBocina();
-			}
-		}
+	public void monitorearSensores(){
 	}
-/*Configuraciones propias de la alarma proporcionadas en el diagrama UML*/
+
 	public void monitorearCorrienteElectrica(){
 	}
 
@@ -66,7 +57,7 @@ public class Alarma{
 
 	public void configurarTiempoActivacion(int tiempoActivacion){
 	}
-/*Getters y Setters*/
+
 	public String getMarca(){
 		return this.marca;
 	}
@@ -170,21 +161,4 @@ public class Alarma{
 	public void setEsActiva(boolean esActiva){
 		this.esActiva = esActiva;
 	}
-
-	public static void main(String[] args){ //Main en donde creamos el objeto alarma y comenzamos la simulación de la alarma
-		Alarma miAlarma = new Alarma();
-		Sensor sensorActivado = miAlarma.sensores.get(0);
-		sensorActivado.setTipo("Acceso");
-		Random aleatorio = new Random(System.currentTimeMillis());
-		int tiempoSimularAperturaAcceso = aleatorio.nextInt(10)+1;//Le damos un valor de milisegundos para la simulación del 1 al 10
-		System.out.println("----- Simulación ha comenzado ----- El sensor detectará una apertura de acceso en "+tiempoSimularAperturaAcceso+" segundos.");
-		try {
-			Thread.sleep(tiempoSimularAperturaAcceso*1000);//Hacemos que se detenga la pantalla el número de milisegundos por mil dará segundos
-		} catch(InterruptedException e) {
-			System.out.println(e.getMessage());
-		}
-		sensorActivado.setActiva(true);//Activamos los sensores intencionalmente 
-		miAlarma.monitorearSensores();//Analizamos el estatus de los sensores 
-	}
-
 }

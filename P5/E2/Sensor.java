@@ -1,10 +1,10 @@
-public class Sensor{//El sensor es una de las clases de mayor jerarquía en conjunto con alarma puesto que la alarma necesita de él para activarse
+public class Sensor{
 	private String tipo;
 	private boolean activa;
 
-	public Sensor(){//Inicializamos los valores del sensor en falso y sin noticias para que la alarma no se active
+	public Sensor(){
 		this.tipo = "";
-		this.activa = false;
+		this.activa = true;
 	}
 
 	public boolean enviarEstado(){
@@ -13,7 +13,7 @@ public class Sensor{//El sensor es una de las clases de mayor jerarquía en conj
 
 	public void monitorearAcceso(){
 	}
-/*Getters y Setters del sensor*/
+
 	public String getTipo(){
 		return this.tipo;
 	}
