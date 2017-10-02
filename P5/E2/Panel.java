@@ -1,6 +1,14 @@
-public class Panel(){
-	private Arraylist<Boton> digitos;
+import java.util.ArrayList;
+
+public class Panel{
+	private ArrayList<Boton> digitos;
 	private Boton entrada;
+
+	public Panel(){
+		Boton miBoton = new Boton();
+		this.digitos.add(miBoton);
+		this.entrada = new Boton();
+	}
 
 	/* Parámetros de los siguientes dos métodos son
 	indicados en el diagrama como de tipo "boton",

@@ -1,4 +1,7 @@
-public class Alarma(){
+import java.util.Date;
+import java.util.ArrayList;
+
+public class Alarma{
 	private String marca, modelo;
 	private Panel panel;
 	private Bocina bocina;
@@ -9,13 +12,20 @@ public class Alarma(){
 	private boolean corrienteElectrica, esActiva;
 
 	public Alarma(){
-
+		this.marca = "Sony";
+		this.modelo = "T500";
+		this.panel = new Panel();
 		this.bocina = new Bocina();
-
-		this.bocina.emitirSonido();
-
+		this.codigo = 1234;
+		this.tiempoActivacion = 10;
+		this.hora = new Date();
+		this.horaInicio = new Date();
+		this.horaFin = new Date();
 		Sensor miSensor = new Sensor();
 		sensores.add(miSensor);
+		this.bateria = new Bateria();
+		this.corrienteElectrica = true;
+		this.esActiva = true;
 	}
 	
 	public void registrarCodigo(int codigo){

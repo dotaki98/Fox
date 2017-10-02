@@ -1,6 +1,16 @@
-public class Boton(){
+public class Boton{
 	private String tipo;
 	private boolean activo;
+
+	public Boton(){
+		this.tipo = "";
+		this.activo = false;
+	}
+
+	public Boton(String tipo){
+		this.tipo = tipo;
+		this.activo = false;
+	}
 
 	public void cambiarEstado(boolean nuevoEstado){
 	}

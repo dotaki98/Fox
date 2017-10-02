@@ -1,6 +1,10 @@
-public class Bocina(){
+public class Bocina{
 	private int volumen;
 	
+	public Bocina(){
+		this.volumen = 10;
+	}
+
 	public void emitirSonido(){
 	}
 
