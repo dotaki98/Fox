@@ -1,5 +1,6 @@
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Alarma{
 	private String marca, modelo;
@@ -22,7 +23,8 @@ public class Alarma{
 		this.horaInicio = new Date();
 		this.horaFin = new Date();
 		Sensor miSensor = new Sensor();
-		sensores.add(miSensor);
+		this.sensores = new ArrayList<Sensor>();
+		this.sensores.add(miSensor);
 		this.bateria = new Bateria();
 		this.corrienteElectrica = true;
 		this.esActiva = true;
@@ -32,6 +34,7 @@ public class Alarma{
 
 	}
 	public void activarBocina(){
+		this.bocina.emitirSonido();
 	}
 
 	public void cambiarHoraInicio(Date horaInicio){
@@ -41,6 +44,12 @@ public class Alarma{
 	}
 
 	public void monitorearSensores(){
+		for(int i = 0; i < sensores.size(); i++) {
+			Sensor sensorEnMonitoreo = sensores.get(i);
+			if(sensorEnMonitoreo.enviarEstado() == true) {
+				this.activarBocina();
+			}
+		}
 	}
 
 	public void monitorearCorrienteElectrica(){
@@ -161,4 +170,21 @@ public class Alarma{
 	public void setEsActiva(boolean esActiva){
 		this.esActiva = esActiva;
 	}
+
+	public static void main(String[] args){
+		Alarma miAlarma = new Alarma();
+		Sensor sensorActivado = miAlarma.sensores.get(0);
+		sensorActivado.setTipo("Acceso");
+		Random aleatorio = new Random(System.currentTimeMillis());
+		int tiempoSimularAperturaAcceso = aleatorio.nextInt(10)+1;
+		System.out.println("----- Simulación ha comenzado ----- El sensor detectará una apertura de acceso en "+tiempoSimularAperturaAcceso+" segundos.");
+		try {
+			Thread.sleep(tiempoSimularAperturaAcceso*1000);
+		} catch(InterruptedException e) {
+			System.out.println(e.getMessage());
+		}
+		sensorActivado.setActiva(true);
+		miAlarma.monitorearSensores();
+	}
+
 }

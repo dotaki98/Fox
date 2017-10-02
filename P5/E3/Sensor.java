@@ -4,7 +4,7 @@ public class Sensor{
 
 	public Sensor(){
 		this.tipo = "";
-		this.activa = true;
+		this.activa = false;
 	}
 
 	public boolean enviarEstado(){

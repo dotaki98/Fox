@@ -6,6 +6,14 @@ public class Bocina{
 	}
 
 	public void emitirSonido(){
+		for(int i = 0; i<10; i++) {
+			System.out.println("BEEP BEEP BEEP --- SE HA DETECTADO APERTURA DE ACCESO --- BEEP BEEP BEEP");
+			try {
+				Thread.sleep(250);
+			} catch(InterruptedException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 	}
 
 	public int getVolumen(){

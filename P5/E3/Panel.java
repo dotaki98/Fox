@@ -6,6 +6,7 @@ public class Panel{
 
 	public Panel(){
 		Boton miBoton = new Boton();
+		this.digitos = new ArrayList<Boton>();
 		this.digitos.add(miBoton);
 		this.entrada = new Boton();
 	}
