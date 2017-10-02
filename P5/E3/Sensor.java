@@ -1,8 +1,14 @@
-public class Sensor(){
+public class Sensor{
 	private String tipo;
 	private boolean activa;
 
+	public Sensor(){
+		this.tipo = "";
+		this.activa = true;
+	}
+
 	public boolean enviarEstado(){
+		return this.activa;
 	}
 
 	public void monitorearAcceso(){

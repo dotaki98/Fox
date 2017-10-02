@@ -1,5 +1,9 @@
-public class Bateria(){
+public class Bateria{
 	private int carga;
+
+	public Bateria(){
+		this.carga = 0;
+	}
 
 	public void cargarBateria(int carga){
 	}
@@ -8,7 +12,7 @@ public class Bateria(){
 	}
 
 	public int getCarga(){
-		returh this.carga;
+		return this.carga;
 	}
 
 	public void setCarga(int carga){
