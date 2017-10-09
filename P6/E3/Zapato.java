@@ -5,6 +5,8 @@ public class Zapato {
 	private String material;
 	private String suela;
 
+
+/* En caso de utilizar el constructor vacío, se creará un zapato talla 10, sin agujetas, color negro, de piel y con suela de cuero */
 	public Zapato(){
 		this.talla = 10;
 		this.tieneAgujeta = false;
@@ -13,6 +15,7 @@ public class Zapato {
 		this.suela = "Cuero";
 	}
 
+/* También se puede usar un constructor sobreescrito, con el cual se pueden especificar las características del zapato deseado */
 	public Zapato(float talla, boolean tieneAgujeta, String color, String material, String suela){
 		this.talla = talla;
 		this.tieneAgujeta = tieneAgujeta;
@@ -20,6 +23,9 @@ public class Zapato {
 		this.material = material;
 		this.suela = suela;
 	}
+
+
+/* Getters y setters */
 
 	public float getTalla(){
 		return this.talla;
@@ -60,6 +66,8 @@ public class Zapato {
 	public void setSuela(String suela){
 		this.suela = suela;
 	}
+
+/* Método para imprimir la información de un zapato */
 
 	public void infoZapato(){
 		System.out.println("----------------------");

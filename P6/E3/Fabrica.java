@@ -4,7 +4,9 @@ import java.util.Scanner;
 
 public class Fabrica{
 	private ArrayList<Zapato> stock;
-	
+
+/* Al momento de crear un objeto de la clase Fabrica, se guardan automáticamente 100 zapatos
+  creados aleatoriamente en el stock */	
 	public Fabrica(){
 		stock = new ArrayList<Zapato>(100);
 		Random rnd = new Random();
@@ -48,6 +50,8 @@ public class Fabrica{
 		}
 	}
 
+/* Setter y getter */
+
 	public ArrayList<Zapato> getStock(){
 		return this.stock;
 	}
@@ -56,6 +60,8 @@ public class Fabrica{
 		this.stock = stock;
 	}
 
+/* Método "fabricarZapato" crea un zapato de manera aleatoria, similar a la manera en la que se llena
+  el stock de la fábrica al crearse */
 	public Zapato fabricarZapato(){
 		Random rnd = new Random();	
 		float talla = (rnd.nextInt(33)) + 10;
@@ -95,11 +101,15 @@ public class Fabrica{
 		return newZapato;
 	}
 	
+/* Método "fabricarZapatoConCaracteristica" permite crear un zapato con características especificadas
+  en la invocación del método */
 	public Zapato fabricarZapatoConCaracteristicas(float talla, boolean tieneAgujeta, String color, String material, String suela){
 		Zapato newZapato = new Zapato(talla, tieneAgujeta, color, material, suela);
 		return newZapato;
 	}
 
+/* El método "checarEquivalenciaModelo" regresa "verdadero" en caso de que los dos zapatos enviados como
+  argumentos al método tengan los mismos atributos, y regresa "falso" en otro caso. */
 	public boolean checarEquivalenciaModelo(Zapato zapatoIndice, Zapato zapatoRequerido){
 		if(zapatoIndice.getTalla() == zapatoRequerido.getTalla() && zapatoIndice.getTieneAgujeta() == zapatoRequerido.getTieneAgujeta() && zapatoIndice.getColor().equals(zapatoRequerido.getColor()) && zapatoIndice.getMaterial().equals(zapatoRequerido.getMaterial()) && zapatoIndice.getSuela().equals(zapatoRequerido.getSuela())){
 			return true;
@@ -109,7 +119,7 @@ public class Fabrica{
 		}
 	}
 	
-	/* El método "mostrarMenu" muestra la bienvenida en caso de que el parámetro "acabaDeArrancar" es verdadero */
+/* El método "mostrarMenu" muestra la bienvenida en caso de que el parámetro "acabaDeArrancar" es verdadero */
 	public void levantarPedido(boolean acabaDeArrancar, ArrayList<Zapato> pedido, Scanner sc){
 
 		if(acabaDeArrancar){
@@ -126,12 +136,16 @@ public class Fabrica{
 		String color = "", material = "", suela = "";
 
 		boolean volverASolicitar = false;
-
+/* Cada que se solicita un valor, se utilizan ciclos "do-while" para validar que se encuentren
+  dentro de los valores aceptados */
 		do{
 			System.out.println("Ingrese talla (desde 10 hasta 42, y sus números medios): ");
 			talla = sc.nextFloat();
+			/* Con la siguiente línea de código se trunca el valor a 1 posición decimal */
 			talla = (float) (Math.floor(talla * 10) / 10);
 			System.out.println("Talla ingresada: "+talla);
+			/* residuoDecimal almacena el dígito ingresado después del punto.
+			  Por ejemplo, si se introdujo 10.8, residuoDecimal almacenará 8*/
 			residuoDecimal = (int) ((talla - Math.floor(talla)) * 10);
 			volverASolicitar = false;
 			if(!((residuoDecimal == 0 || residuoDecimal == 5) && (talla >= 10 && talla<=42.5))){
@@ -217,6 +231,8 @@ public class Fabrica{
 			}
 		}while(volverASolicitar);
 		
+		/* Se agregan tantos zapatos de un mismo modelo como sean indicados en la variable "numeroDeZapatos"
+		  al ArrayList que almacena el pedido. */
 		for(int i=1; i<=numeroDeZapatos; i++){
 			pedido.add(new Zapato(talla, tieneAgujeta, color, material, suela));
 		}
@@ -228,6 +244,10 @@ public class Fabrica{
 			masZapatos = opcion.equalsIgnoreCase("s");		
 		} while(!masZapatos && !opcion.equalsIgnoreCase("n"));
 		
+		/* La siguiente porción de código utiliza recursividad, pues en caso de que se deseen agregar más
+		  zapatos al pedido se hace una llamada al método "levantarPedido", hasta llegar al caso base 
+		  (cuando ya se han terminado de agregar los zapatos al pedido), momento en que se imprimen los
+		  zapatos solicitados en sus respectivas cantidades */
 		if(masZapatos){
 			this.levantarPedido(false, pedido, sc);
 		} else {
@@ -250,6 +270,11 @@ public class Fabrica{
 
 	}	
 	
+
+
+	/* Utilizando el método "checarExistencias" se analiza el pedido realizado y se procede a guardar en un
+	  ArrayList "paqueteDeZapatos" los zapatos para el cliente. En caso de que el modelo solicitado no se
+	  encuentre en stock, se manda fabricar invocando al método "fabricarZapatoConCaracteristicas" */
 	public ArrayList<Zapato> checarExistencias(ArrayList<Zapato> pedido){
 		ArrayList<Zapato> paqueteDeZapatos = new ArrayList<Zapato>();
 
@@ -265,6 +290,9 @@ public class Fabrica{
 					pedido.get(i).infoZapato();
 					System.out.println("se obtuvo desde el stock.");
 					pedido.remove(i);
+					/* Como se desea tener siempre al menos 100 zapatos en stock, cada que
+					  se extrae un par de zapatos del stock se procede a fabricar uno nuevo
+					  de manera aleatoria, para así mantener el tamaño del stock constante */
 					stock.add(this.fabricarZapato());
 					break;
 				}
@@ -286,7 +314,8 @@ public class Fabrica{
 		return paqueteDeZapatos;
 	}
 			
-		
+	/* Desde el método main se hacen los llamados a los métodos del objeto miFabrica para lograr levantar un pedido
+	  y entregarlo al cliente en un "paqueteConPedido" */
 	public static void main(String[] args){
 		Fabrica miFabrica = new Fabrica();
 		ArrayList<Zapato> pedido = new ArrayList<Zapato>();
