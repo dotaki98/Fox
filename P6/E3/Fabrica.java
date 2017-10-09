@@ -227,6 +227,7 @@ public class Fabrica{
 		do{
 			System.out.println("Introduzca el número de zapatos requeridos: ");
 			numeroDeZapatos = sc.nextInt();
+			volverASolicitar = false;
 			if(numeroDeZapatos < 1){
 				volverASolicitar = true;
 				System.out.println("Opción incorrecta. Vuelva a intentarlo");
