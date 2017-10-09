@@ -46,7 +46,9 @@ public class Fabrica{
 			
 			Zapato newZapato = new Zapato(talla, tieneAgujeta, color, material, suela);
 			stock.add(newZapato);
-			newZapato.infoZapato();
+			/* Se puede descomentar la siguiente sentencia para imprimir las características
+			de los zapatos que se van creando dentro del constructor de la clase */
+			// newZapato.infoZapato();
 		}
 	}
 
