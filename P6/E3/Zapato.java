@@ -21,6 +21,46 @@ public class Zapato {
 		this.suela = suela;
 	}
 
+	public float getTalla(){
+		return this.talla;
+	}
+
+	public void setTalla(float talla){
+		this.talla = talla;
+	}
+
+	public boolean getTieneAgujeta(){
+		return this.tieneAgujeta;
+	}
+
+	public void setTieneAgujeta(boolean tieneAgujeta){
+		this.tieneAgujeta = tieneAgujeta;
+	}
+
+	public String getColor(){
+		return this.color;
+	}
+
+	public void setColor(String color){
+		this.color = color;
+	}
+
+	public String getMaterial(){
+		return this.material;
+	}
+
+	public void setMaterial(String material){
+		this.material = material;
+	}
+
+	public String getSuela(){
+		return this.suela;
+	}
+
+	public void setSuela(String suela){
+		this.suela = suela;
+	}
+
 	public void infoZapato(){
 		System.out.println("----------------------");
 		System.out.println("Talla: "+this.talla);
