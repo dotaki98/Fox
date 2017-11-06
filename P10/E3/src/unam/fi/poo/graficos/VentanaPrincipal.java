@@ -271,8 +271,9 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		}
 	}
 
-	public void escribirInformacion() {
+	public boolean escribirInformacion() {
 		System.out.println("Escribiendo información");
+		return true;
 	}
 
 	public void actionPerformed(ActionEvent e){
@@ -314,6 +315,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 				this.cajaApellidoPaterno.setText("");
 				this.cajaApellidoMaterno.setText("");
 				this.cajaEdad.setText("");
+				this.etiquetaEstadoActual.setText("¡Bienvenido al Sistema!");
 				break;
 			case "Alta":
 				System.out.println("Cambiando opción a Alta");
@@ -329,7 +331,21 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 				break;
 			case "Aceptar":
 				if(this.verificarValidezDatos()) {
-					this.escribirInformacion();
+					if(this.escribirInformacion()) {
+						JOptionPane.showMessageDialog(this, "Usuario dado de alta exitosamente");
+						this.cajaNombre.setText("");
+						this.cajaApellidoPaterno.setText("");
+						this.cajaApellidoMaterno.setText("");
+						this.cajaEdad.setText("");
+						this.etiquetaEstadoActual.setText("¡Bienvenido al Sistema!");
+
+						this.remove(panelCaptura);
+						this.validate();
+						this.repaint();
+						this.setContentPane(panelPrincipal);
+						this.validate();
+						this.repaint();
+					}
 				}
 				break;
 			default:
