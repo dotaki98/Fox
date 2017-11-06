@@ -30,7 +30,7 @@ public class Log {
   		BufferedWriter bw = new BufferedWriter(fw);
 
       mensajeError = mensajeError.replaceAll("\\<.*?\\>", "\n");
-  		String entradaLog = "---------------" + momentoError.toString() + mensajeError + "---------------\n";
+  		String entradaLog = "---------------\n" + momentoError.toString() + mensajeError + "\n\n\n";
   		bw.write(entradaLog);
 
       System.out.println("Se añadió entrada de log en: "+ruta);

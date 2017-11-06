@@ -1,7 +1,18 @@
----------------Sun Nov 05 22:11:01 CST 2017
-El nombre contiene caracteres inválidos
+---------------Sun Nov 05 22:13:46 CST 2017
 El apellido paterno está vacío
+El apellido materno está vacío
+La edad está vacía
+
+---------------
+---------------Sun Nov 05 22:13:54 CST 2017
+El apellido paterno contiene caracteres inválidos
 El apellido materno contiene caracteres inválidos
-La edad no está en el rango permitido
+
+---------------
+---------------Sun Nov 05 22:14:20 CST 2017
+El nombre está vacío
+El apellido paterno está vacío
+El apellido materno está vacío
+La edad está vacía
 
 ---------------
