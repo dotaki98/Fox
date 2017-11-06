@@ -16,9 +16,16 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 	JPanel panelInferior;
 	JPanel panelInferiorSuperior;
 	JPanel panelInferiorInferior;
+	// Campos de texto
+	JTextField cajaNombre;
+	JTextField cajaApellidoPaterno;
+	JTextField cajaApellidoMaterno;
+	JTextField cajaEdad;
 	// Creación del layout
 	GridBagLayout layout = new GridBagLayout();
 	GridBagConstraints constraints = new GridBagConstraints();
+	// Opcion predeterminada
+	String opcion = "Alta";
 
 	public VentanaPrincipal() {
 		super();
@@ -63,18 +70,17 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		constraints.gridy = 2;
 		panelPrincipal.add(cambio, constraints);
 
-		JButton aceptar = new JButton("Aceptar");
+		JButton continuar = new JButton("Continuar");
 		constraints.gridx = 3;
 		constraints.gridy = 3;
 		constraints.weighty = 1;
 		constraints.anchor = GridBagConstraints.LINE_END;
-		aceptar.addActionListener(this);
+		continuar.addActionListener(this);
 
-		this.panelPrincipal.add(aceptar, constraints);
+		this.panelPrincipal.add(continuar, constraints);
 	}
 
 	public void crearPanelCaptura(){
-		System.out.println("Todo bien hasta aquí");
 		panelCaptura = new JPanel(new FlowLayout());
 		panelCaptura.setLayout(new BorderLayout());
 
@@ -86,7 +92,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		constraints.gridy = 0;
 		constraints.weighty = 0;
 		constraints.anchor = GridBagConstraints.PAGE_START;
-		System.out.println("Todo bien hasta aquí x2");
 
 		panelSuperior.add(etiquetaSuperior, constraints);
 		panelCaptura.add(panelSuperior, BorderLayout.NORTH);
@@ -100,7 +105,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 
 		panelCentro.add(etiquetaNombre, constraints);
 
-		JTextField cajaNombre = new JTextField(8);
+		cajaNombre = new JTextField(8);
 		constraints.gridx = 1;
 		constraints.gridy = 0;
 		constraints.anchor = GridBagConstraints.CENTER;
@@ -112,9 +117,8 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		constraints.gridy = 1;
 		constraints.anchor = GridBagConstraints.LINE_END;
 		panelCentro.add(etiquetaApellidoPaterno, constraints);
-		System.out.println("Todo bien hasta aquí x3");
 
-		JTextField cajaApellidoPaterno = new JTextField(8);
+		cajaApellidoPaterno = new JTextField(8);
 		constraints.gridx = 1;
 		constraints.gridy = 1;
 		constraints.anchor = GridBagConstraints.CENTER;
@@ -128,7 +132,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 
 		panelCentro.add(etiquetaApellidoMaterno, constraints);
 
-		JTextField cajaApellidoMaterno = new JTextField(8);
+		cajaApellidoMaterno = new JTextField(8);
 		constraints.gridx = 1;
 		constraints.gridy = 2;
 		constraints.anchor = GridBagConstraints.CENTER;
@@ -142,14 +146,13 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 
 		panelCentro.add(etiquetaEdad, constraints);
 
-		JTextField cajaEdad = new JTextField(8);
+		cajaEdad = new JTextField(8);
 		constraints.gridx = 1;
 		constraints.gridy = 3;
 		constraints.anchor = GridBagConstraints.CENTER;
 		panelCentro.add(cajaEdad, constraints);
 
 		panelCaptura.add(panelCentro, BorderLayout.CENTER);
-		System.out.println("Todo bien hasta aquí x4");
 
 		panelInferior = new JPanel(new FlowLayout());
 		panelInferior.setLayout(layout);
@@ -189,7 +192,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 
 		panelInferiorInferior = new JPanel(new FlowLayout());
 		panelInferiorInferior.setLayout(layout);
-		System.out.println("Todo bien hasta aquí x5");
 
 		JLabel etiquetaEstadoActual = new JLabel("¡Bienvenido al Sistema!", SwingConstants.CENTER);
 
@@ -206,38 +208,69 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		constraints.gridy = 1;
 		constraints.ipady = 40;
 		panelInferior.add(panelInferiorInferior, constraints);
-		System.out.println("Todo bien hasta aquí x6");
 
 		// Agregar listeners a botones
 		botonCancelar.addActionListener(this);
 		botonBorrar.addActionListener(this);
 		botonAceptar.addActionListener(this);
 
-		System.out.println("Todo bien hasta aquí x9");
 		this.panelCaptura.add(panelInferior, BorderLayout.SOUTH);
-		System.out.println("Todo bien hasta aquí x7");
-
 	}
 
 	public void actionPerformed(ActionEvent e){
 		System.out.println("Evento: "+e.getActionCommand());
-		if(e.getActionCommand().equalsIgnoreCase("Aceptar")) {
-			this.remove(panelPrincipal);
-			this.validate();
-			this.repaint();
-			System.out.println("Se removió el panel principal");
-			this.setContentPane(panelCaptura);
-			this.validate();
-			this.repaint();
-			System.out.println("Se agregaron componentes de captura");
-		}
-		if(e.getActionCommand().equalsIgnoreCase("Cancelar")) {
-			this.remove(panelCaptura);
-			this.validate();
-			this.repaint();
-			this.setContentPane(panelPrincipal);
-			this.validate();
-			this.repaint();
+		switch(e.getActionCommand()) {
+			case "Continuar":
+				System.out.println("La opcion está marcada como "+opcion);
+				switch(opcion) {
+					case "Alta":
+						this.remove(panelPrincipal);
+						this.validate();
+						this.repaint();
+						System.out.println("Se removió el panel principal");
+						this.setContentPane(panelCaptura);
+						this.validate();
+						this.repaint();
+						System.out.println("Se agregaron componentes de captura");
+						break;
+					case "Baja":
+						System.out.println("En construcción");
+						break;
+					case "Cambio":
+						System.out.println("En construcción");
+						break;
+					default:
+						System.out.println("En construcción");
+				}
+				break;
+			case "Cancelar":
+				this.remove(panelCaptura);
+				this.validate();
+				this.repaint();
+				this.setContentPane(panelPrincipal);
+				this.validate();
+				this.repaint();
+				break;
+			case "Borrar":
+				this.cajaNombre.setText("");
+				this.cajaApellidoPaterno.setText("");
+				this.cajaApellidoMaterno.setText("");
+				this.cajaEdad.setText("");
+				break;
+			case "Alta":
+				System.out.println("Cambiando opción a Alta");
+				opcion = "Alta";
+				break;
+			case "Baja":
+				System.out.println("Cambiando opción a Baja");
+				opcion = "Baja";
+				break;
+			case "Cambio":
+				System.out.println("Cambiando opción a Cambio");
+				opcion = "Cambio";
+				break;
+			default:
+				System.out.println("Evento no reconocido");
 		}
 	}
 }
