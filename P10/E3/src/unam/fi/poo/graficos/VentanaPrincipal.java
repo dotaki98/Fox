@@ -3,6 +3,8 @@ package unam.fi.poo.graficos;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+import unam.fi.poo.archivos.*;
 //import VentanaCaptura;
 
 @SuppressWarnings("serial")
@@ -28,6 +30,9 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 	GridBagConstraints constraints = new GridBagConstraints();
 	// Opcion predeterminada
 	String opcion = "Alta";
+	// Clases escritoras de usuarios.txt y log.txt
+	Alta alta = new Alta();
+	Log log = new Log();
 
 	public VentanaPrincipal() {
 		super();
@@ -219,7 +224,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		this.panelCaptura.add(panelInferior, BorderLayout.SOUTH);
 	}
 
-	public boolean verificarValidezDatos() {
+	public boolean guardarDatos() {
 		System.out.println("Validando información");
 		String mensaje = new String("");
 
@@ -259,24 +264,32 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		}
 
 		if(mensaje.isEmpty()) {
-			String info = cajaNombre.getText() + " " + cajaApellidoPaterno.getText();
-			info = info + " " + cajaApellidoMaterno.getText() + " (" + cajaEdad.getText() + ")";
+			String nombre = cajaNombre.getText();
+			String apellidoPaterno = cajaApellidoPaterno.getText();
+			String apellidoMaterno = cajaApellidoMaterno.getText();
+			String edad = String.valueOf(Integer.parseInt(cajaEdad.getText()));
+			String info =  nombre + " " + apellidoPaterno;
+			info = info + " " + apellidoMaterno + " (" + edad + ")";
 			this.etiquetaEstadoActual.setText(info);
+			try {
+					alta.darDeAlta(nombre, apellidoPaterno, apellidoMaterno, edad);
+			} catch (IOException excepcion) {
+				System.out.println(excepcion.getMessage());
+				log.nuevaEntradaLog("Error de escritura: "+excepcion.getMessage());
+				return false;
+			}
+
 			return true;
 		} else {
 			mensaje = "<html>" + mensaje;
 			mensaje += "</html>";
+			log.nuevaEntradaLog(mensaje);
 			this.etiquetaEstadoActual.setText(mensaje);
 			return false;
 		}
 	}
 
-	public boolean escribirInformacion() {
-		System.out.println("Escribiendo información");
-		return true;
-	}
-
-	public void actionPerformed(ActionEvent e){
+	public void actionPerformed(ActionEvent e) {
 		System.out.println("Evento: "+e.getActionCommand());
 		switch(e.getActionCommand()) {
 			case "Continuar":
@@ -330,22 +343,20 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 				opcion = "Cambio";
 				break;
 			case "Aceptar":
-				if(this.verificarValidezDatos()) {
-					if(this.escribirInformacion()) {
-						JOptionPane.showMessageDialog(this, "Usuario dado de alta exitosamente");
-						this.cajaNombre.setText("");
-						this.cajaApellidoPaterno.setText("");
-						this.cajaApellidoMaterno.setText("");
-						this.cajaEdad.setText("");
-						this.etiquetaEstadoActual.setText("¡Bienvenido al Sistema!");
+				if(this.guardarDatos()) {
+					JOptionPane.showMessageDialog(this, "Usuario dado de alta exitosamente");
+					this.cajaNombre.setText("");
+					this.cajaApellidoPaterno.setText("");
+					this.cajaApellidoMaterno.setText("");
+					this.cajaEdad.setText("");
+					this.etiquetaEstadoActual.setText("¡Bienvenido al Sistema!");
 
-						this.remove(panelCaptura);
-						this.validate();
-						this.repaint();
-						this.setContentPane(panelPrincipal);
-						this.validate();
-						this.repaint();
-					}
+					this.remove(panelCaptura);
+					this.validate();
+					this.repaint();
+					this.setContentPane(panelPrincipal);
+					this.validate();
+					this.repaint();
 				}
 				break;
 			default:
