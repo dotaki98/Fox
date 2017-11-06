@@ -29,7 +29,8 @@ public class Log {
   		 * y así reducir el número de accesos al disco duro */
   		BufferedWriter bw = new BufferedWriter(fw);
 
-  		String entradaLog = "---------------" + momentoError.toString() + mensajeError + "---------------";
+      mensajeError = mensajeError.replaceAll("\\<.*?\\>", "\n");
+  		String entradaLog = "---------------" + momentoError.toString() + mensajeError + "---------------\n";
   		bw.write(entradaLog);
 
       System.out.println("Se añadió entrada de log en: "+ruta);
