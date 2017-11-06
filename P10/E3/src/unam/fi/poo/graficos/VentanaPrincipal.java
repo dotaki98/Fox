@@ -16,6 +16,8 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 	JPanel panelInferior;
 	JPanel panelInferiorSuperior;
 	JPanel panelInferiorInferior;
+	// Etiqueta donde se imprime el estado actual del programa
+	JLabel etiquetaEstadoActual;
 	// Campos de texto
 	JTextField cajaNombre;
 	JTextField cajaApellidoPaterno;
@@ -193,7 +195,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		panelInferiorInferior = new JPanel(new FlowLayout());
 		panelInferiorInferior.setLayout(layout);
 
-		JLabel etiquetaEstadoActual = new JLabel("¡Bienvenido al Sistema!", SwingConstants.CENTER);
+		etiquetaEstadoActual = new JLabel("¡Bienvenido al Sistema!", SwingConstants.CENTER);
 
 		constraints.gridx = 0;
 		constraints.gridy = 0;
@@ -215,6 +217,62 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		botonAceptar.addActionListener(this);
 
 		this.panelCaptura.add(panelInferior, BorderLayout.SOUTH);
+	}
+
+	public boolean verificarValidezDatos() {
+		System.out.println("Validando información");
+		String mensaje = new String("");
+
+		if(cajaNombre.getText().isEmpty()) {
+			System.out.println("Nombre vacío");
+			mensaje += "El nombre está vacío<br>";
+		}
+		else if(!cajaNombre.getText().matches("[a-zA-Z]+")) {
+			mensaje += "El nombre contiene caracteres inválidos<br>";
+		}
+
+		if(cajaApellidoPaterno.getText().isEmpty()) {
+			mensaje += "El apellido paterno está vacío<br>";
+		}
+		else if(!cajaApellidoPaterno.getText().matches("[a-zA-Z]+")) {
+			mensaje += "El apellido paterno contiene caracteres inválidos<br>";
+		}
+
+		if(cajaApellidoMaterno.getText().isEmpty()) {
+			mensaje += "El apellido materno está vacío<br>";
+		}
+		else if(!cajaApellidoMaterno.getText().matches("[a-zA-Z]+")) {
+			mensaje += "El apellido materno contiene caracteres inválidos<br>";
+		}
+
+		if(cajaEdad.getText().isEmpty()) {
+			mensaje += "La edad está vacía<br>";
+		}
+		else if(!cajaEdad.getText().matches("[0-9]+")) {
+			mensaje += "La edad contiene caracteres inválidos<br>";
+		}
+		else {
+			int edad = Integer.parseInt(cajaEdad.getText());
+			if(!(edad >= 18 && edad < 75)) {
+				mensaje += "La edad no está en el rango permitido<br>";
+			}
+		}
+
+		if(mensaje.isEmpty()) {
+			String info = cajaNombre.getText() + " " + cajaApellidoPaterno.getText();
+			info = info + " " + cajaApellidoMaterno.getText() + " (" + cajaEdad.getText() + ")";
+			this.etiquetaEstadoActual.setText(info);
+			return true;
+		} else {
+			mensaje = "<html>" + mensaje;
+			mensaje += "</html>";
+			this.etiquetaEstadoActual.setText(mensaje);
+			return false;
+		}
+	}
+
+	public void escribirInformacion() {
+		System.out.println("Escribiendo información");
 	}
 
 	public void actionPerformed(ActionEvent e){
@@ -268,6 +326,11 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 			case "Cambio":
 				System.out.println("Cambiando opción a Cambio");
 				opcion = "Cambio";
+				break;
+			case "Aceptar":
+				if(this.verificarValidezDatos()) {
+					this.escribirInformacion();
+				}
 				break;
 			default:
 				System.out.println("Evento no reconocido");
