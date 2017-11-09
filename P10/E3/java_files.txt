@@ -1,0 +1,5 @@
+./src/unam/fi/poo/graficos/VentanaPrincipal.java
+./src/unam/fi/poo/graficos/VentanaCaptura.java
+./src/unam/fi/poo/archivos/Alta.java
+./src/unam/fi/poo/archivos/Log.java
+./src/unam/fi/poo/clases/SistemaCaptura.java
