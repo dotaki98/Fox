@@ -1,0 +1,3 @@
+./src/unam/fi/poo/hilos/Cliente.java
+./src/unam/fi/poo/hilos/Tienda.java
+./src/unam/fi/poo/hilos/Cajero.java
