@@ -1,5 +1,3 @@
-//package thread2;
-
 public class Productor extends Thread {
   private Buffer buffer;
   private final String letras="abcdefghijklmnopqrstuvxyz";
