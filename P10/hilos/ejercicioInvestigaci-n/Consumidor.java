@@ -1,5 +1,3 @@
-//package thread2;
-
 public class Consumidor extends Thread {
   private Buffer buffer;
   public Consumidor(Buffer buffer) {
