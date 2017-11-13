@@ -1,15 +1,15 @@
 package unam.fi.poo.graficos;
 
+import java.io.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
-import unam.fi.poo.archivos.*;
-//import VentanaCaptura;
+import unam.fi.poo.excepciones.miExcepcion;
 
 @SuppressWarnings("serial")
 
 public class VentanaPrincipal extends JFrame implements ActionListener{
+
 	// Paneles auxiliares
 	JPanel panelPrincipal;
 	JPanel panelCaptura;
@@ -30,25 +30,31 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 	GridBagConstraints constraints = new GridBagConstraints();
 	// Opcion predeterminada
 	String opcion = "Alta";
-	// Clases escritoras de usuarios.txt y log.txt
-	Alta alta = new Alta();
-	Log log = new Log();
+
 
 	public VentanaPrincipal() {
+
 		super();
 		this.crearVentanaPrincipal();
 		this.crearPanelPrincipal();
 		this.crearPanelCaptura();
 		this.setContentPane(this.panelPrincipal);
 		this.setVisible(true);
+
 	}
 
+
+
 	public void crearVentanaPrincipal() {
-		this.setTitle("SCD");
+
+		this.setTitle("Sistema de Captura de Datos");
 		this.setSize(400, 350);
 		this.setResizable(false);
 		super.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
 	}
+
+
 
 	public void crearPanelPrincipal(){
 
@@ -67,6 +73,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		constraints.anchor = GridBagConstraints.LINE_START;
 		constraints.gridx = 0;
 		constraints.gridy = 0;
+
 		alta.addActionListener(this);
 		baja.addActionListener(this);
 		cambio.addActionListener(this);
@@ -85,9 +92,13 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		continuar.addActionListener(this);
 
 		this.panelPrincipal.add(continuar, constraints);
+
 	}
 
+
+
 	public void crearPanelCaptura(){
+
 		panelCaptura = new JPanel(new FlowLayout());
 		panelCaptura.setLayout(new BorderLayout());
 
@@ -152,13 +163,11 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		constraints.anchor = GridBagConstraints.LINE_END;
 
 		panelCentro.add(etiquetaEdad, constraints);
-
 		cajaEdad = new JTextField(8);
 		constraints.gridx = 1;
 		constraints.gridy = 3;
 		constraints.anchor = GridBagConstraints.CENTER;
 		panelCentro.add(cajaEdad, constraints);
-
 		panelCaptura.add(panelCentro, BorderLayout.CENTER);
 
 		panelInferior = new JPanel(new FlowLayout());
@@ -182,13 +191,12 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		constraints.gridy = 0;
 
 		panelInferiorSuperior.add(botonBorrar, constraints);
-
+		
 		JButton botonAceptar = new JButton("Aceptar");
 		constraints.gridx = 2;
 		constraints.gridy = 0;
 
 		panelInferiorSuperior.add(botonAceptar, constraints);
-
 
 		constraints.gridx = 0;
 		constraints.gridy = 0;
@@ -196,10 +204,8 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		constraints.gridwidth = 3;
 		constraints.ipady = -2;
 		panelInferior.add(panelInferiorSuperior, constraints);
-
 		panelInferiorInferior = new JPanel(new FlowLayout());
 		panelInferiorInferior.setLayout(layout);
-
 		etiquetaEstadoActual = new JLabel("¡Bienvenido al Sistema!", SwingConstants.CENTER);
 
 		constraints.gridx = 0;
@@ -220,14 +226,14 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		botonCancelar.addActionListener(this);
 		botonBorrar.addActionListener(this);
 		botonAceptar.addActionListener(this);
-
 		this.panelCaptura.add(panelInferior, BorderLayout.SOUTH);
 	}
 
-	public boolean guardarDatos() {
+	public boolean verificarValidezDatos() throws miExcepcion{
+
 		System.out.println("Validando información");
 		String mensaje = new String("");
-
+		
 		if(cajaNombre.getText().isEmpty()) {
 			System.out.println("Nombre vacío");
 			mensaje += "El nombre está vacío<br>";
@@ -235,21 +241,18 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		else if(!cajaNombre.getText().matches("[a-zA-Z]+")) {
 			mensaje += "El nombre contiene caracteres inválidos<br>";
 		}
-
 		if(cajaApellidoPaterno.getText().isEmpty()) {
 			mensaje += "El apellido paterno está vacío<br>";
 		}
 		else if(!cajaApellidoPaterno.getText().matches("[a-zA-Z]+")) {
 			mensaje += "El apellido paterno contiene caracteres inválidos<br>";
 		}
-
 		if(cajaApellidoMaterno.getText().isEmpty()) {
 			mensaje += "El apellido materno está vacío<br>";
 		}
 		else if(!cajaApellidoMaterno.getText().matches("[a-zA-Z]+")) {
 			mensaje += "El apellido materno contiene caracteres inválidos<br>";
 		}
-
 		if(cajaEdad.getText().isEmpty()) {
 			mensaje += "La edad está vacía<br>";
 		}
@@ -257,48 +260,50 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 			mensaje += "La edad contiene caracteres inválidos<br>";
 		}
 		else {
+
 			int edad = Integer.parseInt(cajaEdad.getText());
 			if(!(edad >= 18 && edad < 75)) {
 				mensaje += "La edad no está en el rango permitido<br>";
 			}
 		}
-
 		if(mensaje.isEmpty()) {
-			String nombre = cajaNombre.getText();
-			String apellidoPaterno = cajaApellidoPaterno.getText();
-			String apellidoMaterno = cajaApellidoMaterno.getText();
-			String edad = String.valueOf(Integer.parseInt(cajaEdad.getText()));
-			String info =  nombre + " " + apellidoPaterno;
-			info = info + " " + apellidoMaterno + " (" + edad + ")";
+			String info = cajaNombre.getText() + " " + cajaApellidoPaterno.getText();
+			info = info + " " + cajaApellidoMaterno.getText() + " (" + cajaEdad.getText() + ")";
 			this.etiquetaEstadoActual.setText(info);
-			try {
-					alta.darDeAlta(nombre, apellidoPaterno, apellidoMaterno, edad);
-			} catch (IOException excepcion) {
-				System.out.println(excepcion.getMessage());
-				log.nuevaEntradaLog("Error de escritura: "+excepcion.getMessage());
-				return false;
-			}
-
 			return true;
 		} else {
 			mensaje = "<html>" + mensaje;
 			mensaje += "</html>";
-			log.nuevaEntradaLog(mensaje);
 			this.etiquetaEstadoActual.setText(mensaje);
-			return false;
+			//return false;
+			throw new miExcepcion("No se puede llenar de ésta manera");
+
+		}
+
+	}
+
+	public void escribirInformacion() {
+
+		System.out.println("Escribiendo información");
+		String ruta="./datos.txt";
+		String N, AP, AM, E;
+		N=this.cajaNombre.getText();
+		AP=this.cajaApellidoPaterno.getText();
+		AM=this.cajaApellidoMaterno.getText();
+		E=this.cajaEdad.getText();
+		try{
+			Escribir(ruta, N,AP,AM,E);
+		}catch(Exception IOException){
+			System.out.println("No se pudo registrar");
 		}
 	}
 
-	public void resetearPanelCaptura(){
-		this.cajaNombre.setText("");
-		this.cajaApellidoPaterno.setText("");
-		this.cajaApellidoMaterno.setText("");
-		this.cajaEdad.setText("");
-		this.etiquetaEstadoActual.setText("¡Bienvenido al Sistema!");
-	}
 
-	public void actionPerformed(ActionEvent e) {
+
+	public void actionPerformed(ActionEvent e){
+
 		System.out.println("Evento: "+e.getActionCommand());
+
 		switch(e.getActionCommand()) {
 			case "Continuar":
 				System.out.println("La opcion está marcada como "+opcion);
@@ -323,8 +328,14 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 						System.out.println("En construcción");
 				}
 				break;
+
 			case "Cancelar":
-				this.resetearPanelCaptura();
+				System.out.println("Datos escritos:");
+				try{
+					leer("./datos.txt");
+				}catch(Exception IOException){
+					System.out.println("No se pudieron leer los datos");
+				}
 				this.remove(panelCaptura);
 				this.validate();
 				this.repaint();
@@ -333,7 +344,10 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 				this.repaint();
 				break;
 			case "Borrar":
-				this.resetearPanelCaptura();
+				this.cajaNombre.setText("");
+				this.cajaApellidoPaterno.setText("");
+				this.cajaApellidoMaterno.setText("");
+				this.cajaEdad.setText("");
 				break;
 			case "Alta":
 				System.out.println("Cambiando opción a Alta");
@@ -348,20 +362,45 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 				opcion = "Cambio";
 				break;
 			case "Aceptar":
-				if(this.guardarDatos()) {
-					JOptionPane.showMessageDialog(this, "Usuario dado de alta exitosamente");
-					this.resetearPanelCaptura();
-
-					this.remove(panelCaptura);
-					this.validate();
-					this.repaint();
-					this.setContentPane(panelPrincipal);
-					this.validate();
-					this.repaint();
+				try{
+					if(this.verificarValidezDatos()) {
+					this.escribirInformacion();
+					}
+				}catch(Exception miExcepcion){
+					System.out.println("No se pudo verificar");
 				}
 				break;
 			default:
 				System.out.println("Evento no reconocido");
 		}
+	}
+
+	public void Escribir(String ruta, String Nombre,String apellidoPaterno,String apellidoMaterno,String Edad) throws IOException{
+	
+		File archivo = new File(ruta);
+			if(!archivo.exists()){
+				archivo.createNewFile();
+			}
+		FileWriter fw = new FileWriter(archivo,true);
+		BufferedWriter bw = new BufferedWriter(fw);
+		String textoParaInsertar = new String();
+		textoParaInsertar=apellidoPaterno+','+apellidoMaterno+','+Nombre+','+Edad;
+		bw.write(textoParaInsertar+"\n");
+		bw.close();
+		fw.close();
+	}
+	
+	public void leer(String ruta) throws IOException{
+		FileReader fr = new FileReader(ruta);
+		BufferedReader br = new BufferedReader(fr); 
+		System.out.println("Leyendo de "+ruta);
+		String line = new String(br.readLine());
+		while(line != null){
+			System.out.println(line);
+			line = br.readLine();
+		}
+		br.close();
+		fr.close();
+
 	}
 }

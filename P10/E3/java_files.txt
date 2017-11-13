@@ -3,3 +3,4 @@
 ./src/unam/fi/poo/archivos/Alta.java
 ./src/unam/fi/poo/archivos/Log.java
 ./src/unam/fi/poo/clases/SistemaCaptura.java
+./src/unam/fi/poo/excepciones/miExcepcion.java

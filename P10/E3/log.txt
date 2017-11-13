@@ -1,97 +1,23 @@
----------------Sun Nov 05 22:13:46 CST 2017
-El apellido paterno está vacío
-El apellido materno está vacío
-La edad está vacía
-
----------------
----------------Sun Nov 05 22:13:54 CST 2017
-El apellido paterno contiene caracteres inválidos
-El apellido materno contiene caracteres inválidos
-
----------------
----------------Sun Nov 05 22:14:20 CST 2017
-El nombre está vacío
-El apellido paterno está vacío
-El apellido materno está vacío
-La edad está vacía
-
----------------
----------------
-Sun Nov 05 22:18:42 CST 2017
-El apellido materno está vacío
-La edad está vacía
-
-
-
-
----------------
-Sun Nov 05 22:18:57 CST 2017
-La edad no está en el rango permitido
-
-
-
-
----------------
-Sun Nov 05 22:19:02 CST 2017
-La edad no está en el rango permitido
-
-
-
-
----------------
-Sun Nov 05 22:19:15 CST 2017
-El apellido paterno está vacío
-El apellido materno está vacío
-La edad está vacía
-
-
-
-
----------------
-Sun Nov 05 22:19:59 CST 2017
-El nombre está vacío
-El apellido paterno está vacío
-El apellido materno está vacío
-La edad está vacía
-
-
-
----------------
-Sun Nov 05 22:20:10 CST 2017
+-----------------------------
+Sun Nov 05 22:46:36 CST 2017
 El nombre contiene caracteres inválidos
+El apellido paterno está vacío
 El apellido materno contiene caracteres inválidos
 La edad no está en el rango permitido
 
 
-
----------------------------
-Sun Nov 05 22:21:09 CST 2017
+-----------------------------
+Mon Nov 06 16:22:37 CST 2017
 El nombre está vacío
 El apellido paterno está vacío
 El apellido materno está vacío
-La edad está vacía
+La edad contiene caracteres inválidos
 
 
 -----------------------------
-Sun Nov 05 22:22:07 CST 2017
+Mon Nov 06 16:22:48 CST 2017
 El nombre contiene caracteres inválidos
 El apellido paterno contiene caracteres inválidos
-El apellido materno está vacío
-La edad está vacía
-
-
------------------------------
-Sun Nov 05 22:22:09 CST 2017
-El nombre contiene caracteres inválidos
-El apellido paterno contiene caracteres inválidos
-El apellido materno está vacío
-La edad no está en el rango permitido
-
-
------------------------------
-Sun Nov 05 22:22:12 CST 2017
-El apellido paterno contiene caracteres inválidos
-El apellido materno está vacío
-La edad no está en el rango permitido
+El apellido materno contiene caracteres inválidos
 
 

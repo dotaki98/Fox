@@ -1,5 +1,2 @@
-Usuario,dePrueba,AM,20
 Ulises,Landazuri,Brambila,19
-Sarahi,Marcial,Hernandez,19
-Usuario,de,Prueba,70
-Ulises,Prueba,Otravez,20
+Jejejeje,Ola,Kase,42
