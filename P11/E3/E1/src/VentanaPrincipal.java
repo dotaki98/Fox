@@ -1,4 +1,18 @@
+/**
+ * Clase VentanaPrincipal
+ *
+ * Prueba el funcionamiento del patrón de diseño singleton
+ *
+ * @author Ulises Landázuri
+ * @version 1.0
+ */
 public class VentanaPrincipal {
+
+	// Atributos
+	
+	/**
+	 * VentanaAyuda que implementa el patrón de diseño singleton
+	 */
 	private VentanaAyuda ventanaAyuda;
 
 	public VentanaAyuda getVentanaAyuda() {
@@ -10,7 +24,7 @@ public class VentanaPrincipal {
 	}
 
 	public VentanaPrincipal() {
-		this.setVentanaAyuda(VentanaAyuda.getInstance());
+		this.ventanaAyuda = VentanaAyuda.getInstance();
 	}
 	
 	public void probarSingleton() {

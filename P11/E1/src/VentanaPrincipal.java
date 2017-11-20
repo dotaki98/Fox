@@ -10,7 +10,7 @@ public class VentanaPrincipal {
 	}
 
 	public VentanaPrincipal() {
-		this.setVentanaAyuda(VentanaAyuda.getInstance());
+		this.ventanaAyuda VentanaAyuda.getInstance();
 	}
 	
 	public void probarSingleton() {
