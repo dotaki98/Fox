@@ -15,18 +15,39 @@ public class VentanaPrincipal {
 	 */
 	private VentanaAyuda ventanaAyuda;
 
-	public VentanaAyuda getVentanaAyuda() {
-		return this.ventanaAyuda;
-	}
-
-	public void setVentanaAyuda(VentanaAyuda ventanaAyuda) {
-		this.ventanaAyuda = ventanaAyuda;
-	}
-
+	// Constructor
+	
+	/**
+	 * Constructor por defecto: asigna a ventanaAyuda una instancia de la clase VentanaAyuda
+	 */
 	public VentanaPrincipal() {
 		this.ventanaAyuda = VentanaAyuda.getInstance();
 	}
 	
+	// Métodos setters/getters
+	
+	/**
+	 * Método getter para ventanaAyuda
+	 * @return La instancia de VentanaAyuda en uso
+	 */
+	public VentanaAyuda getVentanaAyuda() {
+		return this.ventanaAyuda;
+	}
+
+	/**
+	 * Método setter para ventanaAyuda
+	 * @param ventanaAyuda Instancia de VentanaAyuda a utilizar
+	 */
+	public void setVentanaAyuda(VentanaAyuda ventanaAyuda) {
+		this.ventanaAyuda = ventanaAyuda;
+	}
+
+	// Métodos públicos
+	
+	/**
+	 * Utiliza los hashcodes de ventanaAyuda antes y después de usar el método getInstance de VentanaAyuda
+	 * para verificar el funcionamiento correcto de la implementación del patrón de diseño singleton
+	 */
 	public void probarSingleton() {
 		int hashcode1 = this.ventanaAyuda.hashCode();
 		System.out.println("Hashcode de ventanaAyuda: "+hashcode1);
@@ -44,6 +65,11 @@ public class VentanaPrincipal {
 
 	}
 	
+
+	/**
+	 * Crea una instancia de la clase VentanaPrincipal y ejecuta su método probarSingleton
+	 * @param args No empleado
+	 */
 	public static void main(String[] args) {
 		VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
 		ventanaPrincipal.probarSingleton();
