@@ -1,14 +1,45 @@
+/**
+ * Clase Cliente
+ *
+ * Simula un cliente con una bicicleta<br>
+ * Prueba el funcionamiento del patrón de diseño prototype
+ *
+ * @author Ulises Landázuri
+ * @version 1.0
+ */
 public class Cliente {
+
+	// Atributos
+
+	/**
+	 * Bicicleta del cliente
+	 */
 	private Bicicleta bicicleta;
 
+	// Métodos setters/getters
+
+	/**
+	 * Método getter para bicicleta
+	 * @return Bicicleta actual
+	 */
 	public Bicicleta getBicicleta() {
 		return this.bicicleta;
 	}
 
+	/**
+	 * Método setter para bicicleta
+	 * @param bicicleta Bicicleta a asignarle al cliente
+	 */
 	public void setBicicleta(Bicicleta bicicleta) {
 		this.bicicleta = bicicleta;
 	}
 	
+	// Métodos públicos
+
+	/**
+	 * Basándose en los hashcodes de las distintos clones de bicicleta creados y sus atributos, permite probar el funcionamiento 
+	 * del patrón de diseño prototype
+	 */
 	public void probarPrototype() {
 		this.bicicleta = new BicicletaMontana("Azul", 29);
 		int hashcode1 = this.bicicleta.hashCode();
@@ -37,6 +68,10 @@ public class Cliente {
 		}
 	}
 
+	/**
+	 * Crea una instancia de la clase Cliente y ejecuta su método probarPrototype
+	 * @param args No empleado
+	 */
 	public static void main(String[] args) {
 		Cliente cliente = new Cliente();
 		cliente.probarPrototype();
